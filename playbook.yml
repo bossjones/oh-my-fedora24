@@ -1,0 +1,45 @@
+---
+- hosts: all
+  become: yes
+  become_method: sudo
+  vars_files:
+    - vars/main.yml
+  roles:
+    - { role: ksylvan.docker }
+    - { role: motd }
+    # - { role: ntp }
+    # - { role: jorti.fail2ban }
+    # - { role: bas-ansible-roles-collection.system-ssh }
+
+
+  pre_tasks:
+
+    - name: Fail if Ansible is ancient
+      fail: msg="We need Ansible >= 2.0. Please update your kit. 'pip install -U Ansible'"
+      when: ansible_version.major < 2
+      tags:
+        - always
+
+    - name: Include vars from local-configure.yml if found
+      include_vars: "{{ item }}"
+      with_first_found:
+       - local-configure.yml
+       - null.yml
+
+  tasks:
+
+    - name: Set timezone variables
+      tags: timezone
+      copy: content={{ timezone|default("UTC\n") }}
+            dest=/etc/timezone
+            owner=root
+            group=root
+            mode=0644
+            backup=yes
+      notify:
+        - update timezone
+
+  handlers:
+    - name: update timezone
+      when: ansible_os_family == 'RedHat'
+      file: src=/usr/share/zoneinfo/{{ timezone|default("UTC\n") }}  dest=/etc/localtime state=link force=yes

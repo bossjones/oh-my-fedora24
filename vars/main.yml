@@ -1,0 +1,9 @@
+---
+firewall_allowed_tcp_ports:
+  - "22"
+  - "25"
+  - "80"
+
+docker_selinux: disabled
+
+fail2ban_jails: [sshd, postfix, dovecot]
