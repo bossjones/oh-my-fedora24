@@ -9,7 +9,7 @@
     - { role: bossjones-ipv6 }
     - { role: ksylvan.docker }
     - { role: motd }
-    # - { role: bossjones-firewalld }
+    - { role: bossjones-firewalld }
     # - { role: pablocrivella.nvm }
     # - { role: ntp }
     # - { role: jorti.fail2ban }
