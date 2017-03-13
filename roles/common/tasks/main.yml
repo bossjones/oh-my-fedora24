@@ -1,0 +1,10 @@
+---
+
+- include: dnf.yml
+  when: ansible_pkg_mgr == 'dnf'
+
+- include: base.yml
+  sudo: no
+
+- set_fact:
+    role_basic_done: true

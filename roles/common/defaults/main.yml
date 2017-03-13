@@ -1,0 +1,7 @@
+---
+base_vars:
+  PYTHON_VERSION_MAJOR: '3'
+  PYTHON_VERSION: '3.5'
+  USER: 'vagrant'
+  USER_HOME: '/home/vagrant'
+  GITHUB_BRANCH: "master"
