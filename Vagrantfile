@@ -21,6 +21,11 @@ Vagrant.configure("2") do |config|
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://atlas.hashicorp.com/search.
   config.vm.box = "fedora/24-cloud-base"
+  # config.vm.define :hyena do |hyena_config|
+  #   hyena_config.vm.box = "hyena-org"
+  #   web_config.vm.forward_port 80, 8080
+  # end
+  config.vm.box = 'hyena-org'
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
@@ -52,6 +57,7 @@ Vagrant.configure("2") do |config|
   config.vm.provider :virtualbox do |vb|
     # Don't boot with headless mode
     vb.gui = false
+    vb.name = 'hyena-org'
 
     # user modifiable memory/cpu settings
     vb.memory = 2048

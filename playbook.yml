@@ -5,7 +5,8 @@
   vars_files:
     - vars/main.yml
   roles:
-    - { role: juju4.ipv6 }
+    # - { role: juju4.ipv6 }
+    - { role: bossjones-ipv6 }
     - { role: ksylvan.docker }
     - { role: motd }
     # - { role: ntp }

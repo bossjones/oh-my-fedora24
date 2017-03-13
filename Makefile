@@ -34,8 +34,4 @@ serverspec-install:
 	bundle install --path .vendor
 
 download-roles:
-	# ansible-galaxy install geerlingguy.docker
-	# ansible-galaxy install bennojoy.ntp
-	# ansible-galaxy install jorti.fail2ban
-	# ansible-galaxy install ksylvan.docker
 	ansible-galaxy install -r install_roles.txt --roles-path roles/
