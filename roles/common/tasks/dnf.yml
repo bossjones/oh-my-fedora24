@@ -4,7 +4,6 @@
   dnf: name={{item}} state=present
   with_items:
     - autoconf
-    - aptitude
     - cloc
     - curl
     - htop
@@ -13,9 +12,6 @@
     - proxychains
     - ranger
     - rlwrap
-    - silversearcher-ag
-    - texinfo
-    - tig
+    - the_silver_searcher
     - tmux
     - vim
-    - editorconfig
