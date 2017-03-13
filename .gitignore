@@ -82,3 +82,9 @@ Gemfile.lock
 scarlett_ansible.box
 *.retry
 *.box
+roles/ansible-role-docker
+roles/ansible-role-firewall
+roles/bennojoy.ntp
+roles/jorti.fail2ban
+roles/juju4.ipv6
+roles/ksylvan.docker
