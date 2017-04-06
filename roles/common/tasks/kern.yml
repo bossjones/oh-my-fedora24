@@ -29,7 +29,7 @@
     value: 65535
     state: present
 
-- name: net.ipv4.ip_local_port_range=10240  63999
+- name: net.ipv4.ip_local_port_range=10240 63999
   sysctl:
     name: net.ipv4.ip_local_port_range
     value: 10240  63999

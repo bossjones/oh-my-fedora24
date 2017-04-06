@@ -5,6 +5,7 @@ box_ip = "192.168.33.10"
 
 $script = <<SCRIPT
 echo installing base dependencies
+dnf upgrade -y
 dnf install -y python2 ansible python2-dnf libselinux-python
 date > /etc/vagrant_provisioned_at
 SCRIPT
@@ -27,7 +28,7 @@ Vagrant.configure("2") do |config|
       vb.name = 'hyena_org'
 
       # user modifiable memory/cpu settings
-      vb.memory = 2048
+      vb.memory = 6048
       vb.cpus = 2
   end
 
@@ -48,20 +49,6 @@ Vagrant.configure("2") do |config|
     }
   end
 
-  # config.vm.define "default" do |node|
-  #   node.vm.network "private_network", ip: box_ip
-  # end
-
-  # config.vm.provider :virtualbox do |vb|
-  #   # Don't boot with headless mode
-  #   vb.gui = false
-  #   vb.name = 'hyena_org'
-
-  #   # user modifiable memory/cpu settings
-  #   vb.memory = 2048
-  #   vb.cpus = 2
-  # end
-
   config.vm.hostname = 'hyena.org'
   config.vm.boot_timeout = 400
 
@@ -76,7 +63,8 @@ Vagrant.configure("2") do |config|
   config.ssh.username = "vagrant"
   config.ssh.host = "127.0.0.1"
   config.ssh.guest_port = "2222"
-  config.ssh.private_key_path = ENV['HOME'] + '/dev/vagrant-box/fedora/keys/vagrant_id_rsa'
+  # /dev/vagrant-box/fedora/keys/vagrant_id_rsa
+  config.ssh.private_key_path = ENV['HOME'] + '/dev/bossjones/oh-my-fedora24/keys/vagrant_id_rsa'
   config.ssh.forward_agent = true
   config.ssh.forward_x11 = true
   config.ssh.insert_key = false
