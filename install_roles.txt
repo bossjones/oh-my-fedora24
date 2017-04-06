@@ -5,7 +5,8 @@ jorti.fail2ban
 ksylvan.docker
 juju4.ipv6
 # https://github.com/geerlingguy/ansible-role-java
-java-1.7.0-openjdk
+# 'java-1.7.0-openjdk'
+sleighzy.java-8
 # https://galaxy.ansible.com/bas-ansible-roles-collection/system-core/
 bas-ansible-roles-collection.system-core
 # https://galaxy.ansible.com/bas-ansible-roles-collection/system-ssh/

@@ -88,3 +88,11 @@ roles/bennojoy.ntp
 roles/jorti.fail2ban
 roles/juju4.ipv6
 roles/ksylvan.docker
+roles/bas-ansible-roles-collection.system-core/
+roles/bas-ansible-roles-collection.system-firewall/
+roles/bas-ansible-roles-collection.system-groups/
+roles/bas-ansible-roles-collection.system-hostname/
+roles/bas-ansible-roles-collection.system-security/
+roles/bas-ansible-roles-collection.system-ssh/
+roles/bas-ansible-roles-collection.system-users/
+roles/sleighzy.java-8/
