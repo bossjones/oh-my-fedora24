@@ -11,9 +11,9 @@
     - role: bossjones-firewalld
     - role: mjanser.powerline
     - role: joshualund.golang
-    - role: zzet.rbenv
-      rbenv_users:
-        - vagrant
+    # - role: zzet.rbenv
+    #   rbenv_users:
+    #     - vagrant
 
     - { role: common }
     - { role: bossjones-cli-tools }

@@ -26,7 +26,7 @@ virtualenv_vars:
 
 
 rbenv:
-  env: system
+  env: user
   version: v1.1.0
   default_ruby: 2.2.3
   rubies:
@@ -36,6 +36,9 @@ rbenv:
 powerline_default_top_theme: powerline
 powerline_shell_vcs_branch: yes
 powerline_users:
+  - vagrant
+
+rbenv_users:
   - vagrant
 
 # source: https://github.com/pablocrivella/ansible-role-nvm

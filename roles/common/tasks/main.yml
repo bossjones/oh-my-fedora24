@@ -11,6 +11,9 @@
 - name: install python3 stuff
   include: python.yml
 
+- name: install rbenv stuff
+  include: rbenv.yml
+
 - name: install shell stuff
   include: shell.yml
 
