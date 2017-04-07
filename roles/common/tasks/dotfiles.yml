@@ -1,0 +1,8 @@
+---
+- name: clone bossjones-dotfile
+  git: repo=https://github.com/bossjones/bossjones-dotfiles.git
+       dest="{{virtualenv_vars.DEV_DIR}}/bossjones-dotfiles"
+       update=no
+       depth=1
+  become: "{{base_vars.USER}}"
+  become_user: "{{base_vars.USER}}"
