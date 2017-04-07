@@ -24,6 +24,20 @@ virtualenv_vars:
   PYTHONSTARTUP: "$HOME/.pythonrc"
   PIP_DOWNLOAD_CACHE: "$HOME/.pip/cache"
 
+
+rbenv:
+  env: system
+  version: v1.1.0
+  default_ruby: 2.2.3
+  rubies:
+  - version: 2.2.3
+    env:
+      RUBY_CONFIGURE_OPTS: "--enable-shared"
+powerline_default_top_theme: powerline
+powerline_shell_vcs_branch: yes
+powerline_users:
+  - vagrant
+
 # source: https://github.com/pablocrivella/ansible-role-nvm
 # ---
 # # This could be set to 'user' to support user installs.

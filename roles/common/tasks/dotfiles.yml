@@ -6,3 +6,12 @@
        depth=1
   become: "{{base_vars.USER}}"
   become_user: "{{base_vars.USER}}"
+
+
+- name: clone bossjones-dotfile
+  git: repo=https://github.com/jessfraz/dotfiles.git
+       dest="{{virtualenv_vars.DEV_DIR}}/jessfraz-dotfiles"
+       update=no
+       depth=1
+  become: "{{base_vars.USER}}"
+  become_user: "{{base_vars.USER}}"

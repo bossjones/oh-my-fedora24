@@ -5,13 +5,31 @@
   vars_files:
     - vars/main.yml
   roles:
-    # - { role: juju4.ipv6 }
-    - { role: bossjones-ipv6 }
-    - { role: ksylvan.docker }
-    - { role: motd }
-    - { role: bossjones-firewalld }
+    - role: bossjones-ipv6
+    - role: ksylvan.docker
+    - role: motd
+    - role: bossjones-firewalld
+    - role: mjanser.powerline
+    - role: joshualund.golang
+    - role: zzet.rbenv
+      rbenv_users:
+        - vagrant
+
     - { role: common }
     - { role: bossjones-cli-tools }
+
+    - role: mmannerm.bash_it
+      user: vagrant
+      theme: "powerline-plain"
+      aliases:
+        - general
+        - ansible
+      plugins:
+        - history
+      completions:
+        - git
+
+    # tmuxinator
     # - { role: pablocrivella.nvm }
     # - { role: ntp }
     # - { role: jorti.fail2ban }
@@ -31,6 +49,12 @@
       with_first_found:
        - local-configure.yml
        - null.yml
+
+    - name: pre install system ruby
+      dnf: name={{item}} state=present
+      with_items:
+        - ruby
+
 
   tasks:
 

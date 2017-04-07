@@ -26,3 +26,18 @@ bas-ansible-roles-collection.system-ssh
 
 # https://github.com/geerlingguy/ansible-role-dotfiles
 # geerlingguy.dotfiles
+
+# https://galaxy.ansible.com/zzet/rbenv/
+zzet.rbenv
+
+# https://galaxy.ansible.com/mmannerm/bash_it/
+mmannerm.bash_it
+
+# https://galaxy.ansible.com/carlba/bash_aliases/
+carlba.bash_aliases
+
+# https://galaxy.ansible.com/joshualund/golang/
+joshualund.golang
+
+# https://galaxy.ansible.com/mjanser/powerline/
+mjanser.powerline

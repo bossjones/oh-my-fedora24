@@ -96,3 +96,9 @@ roles/bas-ansible-roles-collection.system-security/
 roles/bas-ansible-roles-collection.system-ssh/
 roles/bas-ansible-roles-collection.system-users/
 roles/sleighzy.java-8/
+roles/carlba.bash_aliases/
+roles/joshualund.golang/
+roles/mjanser.powerline/
+roles/mmannerm.bash_it/
+roles/zzet.rbenv/
+

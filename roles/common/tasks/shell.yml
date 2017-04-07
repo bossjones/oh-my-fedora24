@@ -23,6 +23,19 @@
   become: "{{base_vars.USER}}"
   become_user: "{{base_vars.USER}}"
 
+# source: https://github.com/mmannerm/ansible-bash_it
+# - hosts: servers
+#   roles:
+#     - role: mmannerm.bash_it
+#       user: vagrant
+#       aliases:
+#         - general
+#         - ansible
+#       plugins:
+#         - history
+#       completions:
+#         - git
+
 # Leaving this here because we need the folder structure in place to setup pocketsphinx
 - name: Create ~user/.bash_it/themes/devops
   file: path="/home/{{base_vars.USER}}/.bash_it/themes/devops"
@@ -75,3 +88,10 @@
   tags:
   - super_aliases
   - configuration
+
+# https://fedoramagazine.org/add-power-terminal-powerline/
+# sudo dnf install powerline
+
+# Powerline Plain
+# font symbols font
+#
