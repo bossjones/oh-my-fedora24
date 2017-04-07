@@ -8,5 +8,11 @@
 
 - include: kern.yml
 
+- name: install python3 stuff
+  include: python.yml
+
+- name: install shell stuff
+  include: shell.yml
+
 - set_fact:
     role_basic_done: true

@@ -6,6 +6,24 @@ docker_selinux: disabled
 
 fail2ban_jails: [sshd, postfix, dovecot]
 
+base_vars:
+  PYTHON_VERSION_MAJOR: '3'
+  PYTHON_VERSION: '3.5'
+  GSTREAMER: '1.0'
+  USER: 'vagrant'
+  USER_HOME: '/home/vagrant'
+
+virtualenv_vars:
+  DEV_DIR: "{{ base_vars.USER_HOME }}/dev"
+  VIRT_ROOT: "{{ base_vars.USER_HOME }}/.virtualenvs"
+  WORKON_HOME: "{{ base_vars.USER_HOME }}/.virtualenvs"
+  PROJECT_HOME: "{{ base_vars.USER_HOME }}/dev"
+  VIRTUALENVWRAPPER_PYTHON: "/usr/bin/python3"
+  VIRTUALENVWRAPPER_VIRTUALENV: "/usr/local/bin/virtualenv"
+  VIRTUALENVWRAPPER_SCRIPT: "/usr/local/bin/virtualenvwrapper.sh"
+  PYTHONSTARTUP: "$HOME/.pythonrc"
+  PIP_DOWNLOAD_CACHE: "$HOME/.pip/cache"
+
 # source: https://github.com/pablocrivella/ansible-role-nvm
 # ---
 # # This could be set to 'user' to support user installs.

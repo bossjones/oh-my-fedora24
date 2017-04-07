@@ -11,6 +11,7 @@
     - { role: motd }
     - { role: bossjones-firewalld }
     - { role: common }
+    - { role: bossjones-cli-tools }
     # - { role: pablocrivella.nvm }
     # - { role: ntp }
     # - { role: jorti.fail2ban }

@@ -35,8 +35,8 @@ Vagrant.configure("2") do |config|
   public_key = ENV['HOME'] + '/dev/vagrant-box/fedora/keys/vagrant.pub'
 
   # install sysadmin basics
-  config.vm.provision "shell", inline: $script
-  config.vm.provision "shell", path: "https://gist.githubusercontent.com/bossjones/acb7520c78e145308340cc7445268aaf/raw/5dd9572be3bffec843b6a7ffbe19798a3768082f/python_tools.sh"
+  # config.vm.provision "shell", inline: $script
+  # config.vm.provision "shell", path: "https://gist.githubusercontent.com/bossjones/acb7520c78e145308340cc7445268aaf/raw/5dd9572be3bffec843b6a7ffbe19798a3768082f/python_tools.sh"
 
   config.vm.provision "ansible" do |ansible|
     ansible.playbook = "playbook.yml"
