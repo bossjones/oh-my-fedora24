@@ -41,3 +41,5 @@ joshualund.golang
 
 # https://galaxy.ansible.com/mjanser/powerline/
 mjanser.powerline
+
+pablocrivella.nvm

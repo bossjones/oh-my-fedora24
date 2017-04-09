@@ -29,6 +29,16 @@
     - tig
     - strace
     - tcpdump
+    - autoconf
+    - gcc
+    - bison
+    - flex
+    - gcc-c++
+    - gettext
+    - kernel-devel
+    - make
+    - m4
+    - ncurses-devel
 
 # vim
 # vim-common

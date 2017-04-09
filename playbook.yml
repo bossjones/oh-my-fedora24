@@ -22,7 +22,7 @@
         - history
       completions:
         - git
-    - { role: bossjones-cli-tools }
+    - role: bossjones-cli-tools
 
     # - role: mmannerm.bash_it
     #   user: vagrant
@@ -34,9 +34,28 @@
     #     - history
     #   completions:
     #     - git
-
     # tmuxinator
-    # - { role: pablocrivella.nvm }
+    # - role: pablocrivella.nvm
+    #   nvm_env: user
+    #   nvm_version: v0.33.1
+    #   nvm_default_node_version: stable
+    #   nvm_node_versions:
+    #     - stable
+    #   nvm_global_packages:
+    #     - vtop
+    #     - whereami
+    #     - figlet-cli
+    #     - get-port-cli
+    #     - getmac
+    #     - mediumcli
+    #     - speed-test
+    #     - spoof
+    #     - tldr
+    #     - wireless-tools
+    #     - yaml-lint
+    #   nvm_users:
+    #     - vagrant
+
     # - { role: ntp }
     # - { role: jorti.fail2ban }
     # - { role: bas-ansible-roles-collection.system-ssh }
