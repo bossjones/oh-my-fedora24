@@ -23,6 +23,12 @@
     - ImageMagick
     - gcc
     - lynx
+    - ccze
+    - whois
+    - socat
+    - tig
+    - strace
+    - tcpdump
 
 # vim
 # vim-common

@@ -40,11 +40,11 @@ Vagrant.configure("2") do |config|
 
   config.vm.provision "ansible" do |ansible|
     ansible.playbook = "playbook.yml"
-    ansible.verbose = "v"
+    ansible.verbose = "-v"
     ansible.sudo = true
     ansible.host_key_checking = false
     ansible.limit = 'all'
-    ansible.verbose = '-vvv'
+    # ansible.verbose = '-vvv'
     ansible.extra_vars = {
       public_key: public_key
     }

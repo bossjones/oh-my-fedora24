@@ -6,13 +6,17 @@
 # - include: base.yml
 #   sudo: no
 
-- include: kern.yml
+- name: install kernel settings
+  include: kern.yml
 
 - name: install python3 stuff
   include: python.yml
 
 - name: install rbenv stuff
   include: rbenv.yml
+
+- name: install bash_it stuff
+  include: bash_it.yml
 
 - name: install shell stuff
   include: shell.yml

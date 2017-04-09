@@ -11,23 +11,29 @@
     - role: bossjones-firewalld
     - role: mjanser.powerline
     - role: joshualund.golang
-    # - role: zzet.rbenv
-    #   rbenv_users:
-    #     - vagrant
-
-    - { role: common }
-    - { role: bossjones-cli-tools }
-
-    - role: mmannerm.bash_it
-      user: vagrant
+    - role: common
       theme: "powerline-plain"
+      repository: https://github.com/revans/bash-it.git
+      version: master
       aliases:
         - general
-        - ansible
       plugins:
+        - base
         - history
       completions:
         - git
+    - { role: bossjones-cli-tools }
+
+    # - role: mmannerm.bash_it
+    #   user: vagrant
+    #   theme: "powerline-plain"
+    #   aliases:
+    #     - general
+    #     - ansible
+    #   plugins:
+    #     - history
+    #   completions:
+    #     - git
 
     # tmuxinator
     # - { role: pablocrivella.nvm }

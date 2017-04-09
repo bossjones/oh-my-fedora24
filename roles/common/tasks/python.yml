@@ -2,17 +2,22 @@
 ---
 
 - name: Install virtualenv and virtualenvwrapper
-  become: true
+  become: yes
+  become_method: sudo
   pip: name={{ item }}
        executable=pip3
+       state=present
   with_items:
   - virtualenv
   - virtualenvwrapper
+  - ipython
 
-- name: install ipython
-  pip: name=ipython
-       state=present
-       executable=pip3
+# pip3 install virtualenv virtualenvwrapper ipython
+
+# - name: install ipython
+#   pip: name=ipython
+#        state=present
+#        executable=pip3
 
 - name: install numpy
   pip: name=numpy
