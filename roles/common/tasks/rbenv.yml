@@ -11,7 +11,6 @@
     - git
   become: true
 
-
 - name: set rbenv_owner
   set_fact: 'rbenv_owner={{ rbenv_owner | default("root", true) }}'
 
@@ -92,10 +91,24 @@
   become_user: "{{ item }}"
   ignore_errors: yes
 
+# - name: check ruby versions installed for select users
+#   shell: bash -lc "{{ rbenv_root }}/bin/rbenv versions | grep {{ item[1].version }}"
+#   become: yes
+#   become_user: "{{ item[0] }}"
+#   with_nested:
+#     - "{{ rbenv_users }}"
+#     - "{{ rbenv.rubies }}"
+#   register: ruby_installed
+#   changed_when: false
+#   ignore_errors: yes
+#   failed_when: false
+#   check_mode: no
+
 - name: check ruby versions installed for select users
-  shell: bash -lc "{{ rbenv_root }}/bin/rbenv versions | grep {{ item[1].version }}"
-  become: yes
-  become_user: "{{ item[0] }}"
+  shell: |
+    {{ rbenv_root }}/bin/rbenv versions | grep {{ item[1].version }}
+  # become: yes
+  # become_user: "{{ item[0] }}"
   with_nested:
     - "{{ rbenv_users }}"
     - "{{ rbenv.rubies }}"
@@ -104,40 +117,89 @@
   ignore_errors: yes
   failed_when: false
   check_mode: no
+  become: "{{base_vars.USER}}"
+  become_user: "{{base_vars.USER}}"
+  args:
+    executable: /bin/bash
 
-- name: install ruby {{ item[2].version }} for select users
-  shell: bash -lc "{{ rbenv_root }}/bin/rbenv install {{ item[2].version }}"
-  become: yes
-  become_user: "{{ item[1] }}"
+# - name: install ruby {{ item[2].version }} for select users
+#   shell: bash -lc "{{ rbenv_root }}/bin/rbenv install {{ item[2].version }}"
+#   become: yes
+#   become_user: "{{ item[1] }}"
+#   with_nested:
+#     - "{{ ruby_installed.results }}"
+#     - "{{ rbenv_users }}"
+#     - "{{ rbenv.rubies }}"
+#   when:
+#     - item[0].rc != 0
+#     - item[0].item[0] == item[1]
+#     - item[0].item[1].version == item[2].version
+#   ignore_errors: yes
+#   environment: "{{ item[2].env | default({}) | combine({ 'TMPDIR': rbenv_tmpdir }) }}"
+
+- name: "install ruby {{ item[2].version }} for select users"
+  shell: |
+    {{ rbenv_root }}/bin/rbenv install {{ item[2].version }}
   with_nested:
     - "{{ ruby_installed.results }}"
     - "{{ rbenv_users }}"
     - "{{ rbenv.rubies }}"
   when:
-    - item[0].rc != 0
-    - item[0].item[0] == item[1]
-    - item[0].item[1].version == item[2].version
+  - item[0].rc != 0
+  - item[0].item[0] == item[1]
+  - item[0].item[1].version == item[2].version
   ignore_errors: yes
   environment: "{{ item[2].env | default({}) | combine({ 'TMPDIR': rbenv_tmpdir }) }}"
+  become: "{{base_vars.USER}}"
+  become_user: "{{base_vars.USER}}"
+  args:
+    executable: /bin/bash
 
-- name: check if user ruby version is {{ rbenv.default_ruby }}
-  shell: bash -lc "{{ rbenv_root }}/bin/rbenv version | cut -d ' ' -f 1 | grep -Fx '{{ rbenv.default_ruby }}'"
-  become: yes
-  become_user: "{{ item }}"
-  with_items: "{{ rbenv_users }}"
+# - name: check if user ruby version is {{ rbenv.default_ruby }}
+#   shell: bash -lc "{{ rbenv_root }}/bin/rbenv version | cut -d ' ' -f 1 | grep -Fx '{{ rbenv.default_ruby }}'"
+#   become: yes
+#   become_user: "{{ item }}"
+#   with_items: "{{ rbenv_users }}"
+#   register: ruby_selected
+#   changed_when: false
+#   ignore_errors: yes
+#   failed_when: false
+#   check_mode: no
+
+- name: "check if user ruby version is {{ rbenv.default_ruby }}"
+  shell: |
+    {{ rbenv_root }}/bin/rbenv version | cut -d ' ' -f 1 | grep -Fx '{{ rbenv.default_ruby }}'
+  become: "{{base_vars.USER}}"
+  become_user: "{{base_vars.USER}}"
   register: ruby_selected
   changed_when: false
   ignore_errors: yes
   failed_when: false
   check_mode: no
+  args:
+    executable: /bin/bash
 
-- name: set ruby {{ rbenv.default_ruby }} for select users
-  shell: bash -lc "{{ rbenv_root }}/bin/rbenv global {{ rbenv.default_ruby }} && rbenv rehash"
-  become: yes
-  become_user: "{{ item[1] }}"
+# - name: set ruby {{ rbenv.default_ruby }} for select users
+#   shell: bash -lc "{{ rbenv_root }}/bin/rbenv global {{ rbenv.default_ruby }} && rbenv rehash"
+#   become: yes
+#   become_user: "{{ item[1] }}"
+#   with_together:
+#     - "{{ ruby_selected.results }}"
+#     - "{{ rbenv_users }}"
+#   when:
+#     - item[0].rc != 0
+#   ignore_errors: yes
+
+- name: "set ruby {{ rbenv.default_ruby }} for select users"
+  shell: |
+    {{ rbenv_root }}/bin/rbenv global {{ rbenv.default_ruby }} && rbenv rehash
+  become: "{{base_vars.USER}}"
+  become_user: "{{base_vars.USER}}"
   with_together:
     - "{{ ruby_selected.results }}"
     - "{{ rbenv_users }}"
   when:
     - item[0].rc != 0
   ignore_errors: yes
+  args:
+    executable: /bin/bash

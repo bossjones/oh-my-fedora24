@@ -44,6 +44,7 @@ Vagrant.configure("2") do |config|
     ansible.sudo = true
     ansible.host_key_checking = false
     ansible.limit = 'all'
+    ansible.verbose = '-vvv'
     ansible.extra_vars = {
       public_key: public_key
     }
