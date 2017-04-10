@@ -63,17 +63,7 @@
     line: 'export PATH="~/.bin:$PATH"'
     regexp: '^export PATH="~/.bin:$PATH"'
 
-
 - name: dnf installpowerline
   dnf: name={{item}} state=present
   with_items:
     - powerline
-
-- name: "powerline-daemon in bash_profile"
-  with_items:
-  - if [ -f `which powerline-daemon` ]; then
-  -   powerline-daemon -q
-  lineinfile:
-    dest: "/home/{{base_vars.USER}}/.bash_profile"
-    line: 'export PATH="~/.bin:$PATH"'
-    regexp: '^export PATH="~/.bin:$PATH"'
