@@ -30,5 +30,8 @@
 - name: install shell stuff
   include: shell.yml
 
+- name: install dotfiles stuff
+  include: dotfiles.yml
+
 - set_fact:
     role_basic_done: true

@@ -51,15 +51,14 @@
     - ascii
     - asciinema
     - asciidoc
-    - perl-base
-    - perl-modules
-    - netpipe
+    - NetPIPE
     - netsed
     - sec
     - maven
     - ncurses-base
     - ncurses-bin
     - tcpflow
+    - neofetch
 
 - name: check ruby versions installed for select users
   shell: |
