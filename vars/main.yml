@@ -86,6 +86,7 @@ nvm_global_packages:
   - tldr
   - wireless-tools
   - yaml-lint
+  - pathogen-pm
 nvm_users:
   - "{{ base_vars.USER }}"
 
