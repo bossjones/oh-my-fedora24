@@ -56,3 +56,9 @@
 # font symbols font
 #
 ####################################################
+
+- name: "~/.bin local bin"
+  lineinfile:
+    dest: "/home/{{base_vars.USER}}/.bash_profile"
+    line: 'export PATH="~/.bin:$PATH"'
+    regexp: '^export PATH="~/.bin:$PATH"'
