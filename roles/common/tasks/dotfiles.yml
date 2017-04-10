@@ -8,10 +8,22 @@
   become_user: "{{base_vars.USER}}"
 
 
-- name: clone bossjones-dotfile
+- name: clone jessfraz-dotfiles
   git: repo=https://github.com/jessfraz/dotfiles.git
        dest="{{virtualenv_vars.DEV_DIR}}/jessfraz-dotfiles"
        update=no
        depth=1
   become: "{{base_vars.USER}}"
   become_user: "{{base_vars.USER}}"
+
+- name: clone jessfraz-dockerfiles
+  git: repo=https://github.com/jessfraz/dockerfiles.git
+       dest="{{virtualenv_vars.DEV_DIR}}/jessfraz-dockerfiles"
+       update=yes
+       depth=1
+  become: "{{base_vars.USER}}"
+  become_user: "{{base_vars.USER}}"
+  changed_when: false
+  ignore_errors: yes
+  failed_when: false
+  check_mode: no
