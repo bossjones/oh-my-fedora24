@@ -58,6 +58,12 @@
     - ncurses-base
     - tcpflow
     - screenfetch
+    - figlet
+    - libcaca.x86_64
+    - libcaca-devel
+    - cpulimit
+    - w3m
+    - w3m-img
 
 - name: check ruby versions installed for select users
   shell: |
