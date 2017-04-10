@@ -68,7 +68,7 @@ rbenv_plugins:
 rbenv_root: "{% if rbenv.env == 'system' %}/usr/local/rbenv{% else %}~/.rbenv{% endif %}"
 
 nvm_repo: "git://github.com/creationix/nvm.git"
-nvm_root: "~/.nvm"
+nvm_root: "{{ base_vars.USER_HOME }}/.nvm"
 nvm_env: user
 nvm_version: v0.33.1
 nvm_default_node_version: stable

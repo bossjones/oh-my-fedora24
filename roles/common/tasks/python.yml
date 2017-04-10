@@ -11,6 +11,18 @@
   - virtualenv
   - virtualenvwrapper
   - ipython
+  - httpstat
+  - cheat
+  - psutil
+
+# - name: glances install stuff
+#   become: yes
+#   become_method: sudo
+#   pip: name={{ item }}
+#        executable=pip3
+#        state=present
+#   with_items:
+#   - glances[action,browser,cloud,cpuinfo,chart,docker,export,folders,gpu,ip,raid,snmp,web,wifi]
 
 # pip3 install virtualenv virtualenvwrapper ipython
 
@@ -34,3 +46,12 @@
   tags:
   - pythonrc
   - configuration
+
+
+- name: "install glances system wide"
+  shell: |
+    bash -lc "wget -O- https://bit.ly/glances | /bin/bash"
+  become: yes
+  become_method: sudo
+  args:
+    executable: /bin/bash

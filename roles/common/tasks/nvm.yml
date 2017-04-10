@@ -51,7 +51,7 @@
 
 - name: install versions for each user
   shell: |
-    nvm install {{ item.1 }}
+    bash -lc "nvm install {{ item.1 }}"
   become: "{{base_vars.USER}}"
   become_user: "{{ item.0 }}"
   with_nested:
@@ -59,9 +59,9 @@
     - "{{ nvm_node_versions }}"
   register: output
   changed_when: "'already installed.' not in output.stderr"
-  ignore_errors: yes
-  failed_when: false
-  check_mode: no
+  # ignore_errors: yes
+  # failed_when: false
+  # check_mode: no
   args:
     executable: /bin/bash
 
@@ -93,7 +93,7 @@
 
 - name: install packages for each user
   shell: |
-    nvm use {{ item.1 }} && npm install -g {{ item.2 }}
+    bash -lc "nvm use {{ item.1 }} && npm install -g {{ item.2 }}"
   become: true
   become_user: "{{ item.0 }}"
   with_nested:

@@ -15,6 +15,9 @@
 - name: install rbenv stuff
   include: rbenv.yml
 
+- name: install nvm stuff
+  include: nvm.yml
+
 - name: install bash_it stuff
   include: bash_it.yml
 
