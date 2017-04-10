@@ -67,8 +67,8 @@
   args:
     executable: /bin/bash
 
-- name: cheatsheets hyenacommands
-  copy: src=hyenacommands dest=/usr/lib/python3.5/site-packages/cheat/cheatsheets/hyenacommands
+- name: cheatsheets hyena
+  copy: src=hyena dest=/usr/lib/python3.5/site-packages/cheat/cheatsheets/hyena
   become: yes
   become_user: "{{base_vars.USER}}"
   ignore_errors: yes
