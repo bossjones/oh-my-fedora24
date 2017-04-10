@@ -18,6 +18,12 @@
 - name: install nvm stuff
   include: nvm.yml
 
+- name: install tmux stuff
+  include: tmux.yml
+
+- name: install vimrc stuff
+  include: vimrc.yml
+
 - name: install bash_it stuff
   include: bash_it.yml
 
