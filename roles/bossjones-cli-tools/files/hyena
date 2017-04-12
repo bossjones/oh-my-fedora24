@@ -277,3 +277,103 @@
 # Media:
 ###############
 # youtube-dl:          youtube downloader
+###############
+# Additional
+###############
+# nload: nload is a console application which monitors network traffic and bandwidth usage in real time.
+# It visualizes the in- and outgoing traffic using two graphs and provides additional info like the total
+# amount of transfered data and min/max network usage.
+#
+# powertop: software utility designed to measure, explain and minimise a computer's electrical power consumption.
+#
+# iftop: iftop does for network usage what top(1) does for CPU usage.
+# It listens to network traffic on a named interface and displays a
+# table of current bandwidth usage by pairs of hosts. Handy for answering the question "why is our ADSL link so slow?".
+#
+# jnettop: captures traffic coming across the host it is running on and displays streams sorted by bandwidth they use.
+# Result is a nice listing of communication on network by host and port,
+# how many bytes went through this transport and the bandwidth it is consuming.
+#
+# saidar: saidar is a curses-based tool for viewing the system statistics available through libstatgrab.
+# Statistics include CPU, processes, load, memory, swap, network I/O, disk I/O, and file system information.
+#
+# dstat: Dstat is a versatile replacement for vmstat, iostat and ifstat.
+# Dstat overcomes some of the limitations and adds some extra features.
+# Dstat allows you to view all of your system resources instantly,
+# you can eg. compare disk usage in combination with interrupts from your IDE controller,
+# or compare the network bandwidth numbers directly with the disk throughput (in the same interval).
+#
+# goaccess: GoAccess is an open source real-time web log analyzer and interactive viewer
+# that runs in a terminal in *nix systems or through your browser.
+#
+# whowatch: Whowatch is an interactive, ncurses-based, process and users monitoring tool which updates information in real time.
+# It can be described as an interactive mix of ps, pstree, lsof, w, finger and kill.
+#
+# parallel: parallel runs the specified command, passing it a single one of the specified arguments.
+# This is repeated for each argument. Jobs may be run in parallel. The default is to run one job per CPU.
+# If no command is specified before the --, the commands after it are instead run in parallel.
+#
+# borg:
+#
+# hr:
+#
+# spark:
+#
+# slugify:
+#
+# ripgrep:
+#
+# spot:
+#
+# lsp:
+#
+# progress:
+#
+# wego:
+#
+# sheet:
+
+# https://github.com/ok-borg/borg
+# TODO: make this into a shell
+# wget https://github.com/ok-borg/borg/releases/download/v0.0.3/borg_linux_amd64 -O /usr/local/bin/borg
+# chmod 755 /usr/local/bin/borg
+
+# TODO: Make a shell ansible for this then append to ~/.bash_profile
+# add fzf
+# git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+# ~/.fzf/install
+
+# source: https://github.com/LuRsT/hr
+# TODO: curl https://raw.githubusercontent.com/LuRsT/hr/master/hr > ~/bin/hr
+# curl https://raw.githubusercontent.com/LuRsT/hr/master/hr > ~/.bin/hr
+# https://github.com/LuRsT/hr.git
+
+# TODO: curl https://raw.githubusercontent.com/holman/spark/master/spark -o /usr/local/bin/spark && chmod +x /usr/local/bin/spark
+
+# TODO: https://github.com/benlinton/slugify.git
+
+# TODO: install rg
+# source: https://github.com/BurntSushi/ripgrep
+# $ dnf copr enable carlgeorge/ripgrep
+# $ dnf install ripgrep
+
+# TODO: install spot
+# npm install -g spot
+
+# TODO: gem install sheet
+# gem install sheet
+
+# TODO: go get github.com/dborzov/lsp
+# go get github.com/dborzov/lsp
+
+
+# INFO: look into this https://github.com/marshyski/quick-secure/blob/master/quick-secure
+
+# TODO: https://github.com/Xfennec/progress.git
+# https://github.com/Xfennec/progress.git
+
+# TODO: https://github.com/schachmat/wego
+# go get -u github.com/schachmat/wego
+
+# TODO: npm install -g node-geocoder-cli
+# https://github.com/nchaulet/node-geocoder-cli

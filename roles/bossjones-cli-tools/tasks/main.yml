@@ -64,6 +64,68 @@
     - cpulimit
     - w3m
     - w3m-img
+    # http://www.binarytides.com/linux-commands-monitor-network/
+    - nload
+    # - slurm
+    - powertop
+    - iftop
+    - jnettop
+    # - curl -s https://s3.amazonaws.com/download.draios.com/stable/install-sysdig | sudo bash
+    - saidar
+    - dstat
+    # https://www.serverdensity.com/monitor/linux/how-to/
+    # - sar
+    - goaccess
+    - whowatch
+    - parallel
+
+# https://github.com/ok-borg/borg
+# TODO: make this into a shell
+# wget https://github.com/ok-borg/borg/releases/download/v0.0.3/borg_linux_amd64 -O /usr/local/bin/borg
+# chmod 755 /usr/local/bin/borg
+
+# TODO: Make a shell ansible for this then append to ~/.bash_profile
+# add fzf
+# git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+# ~/.fzf/install
+
+# source: https://github.com/LuRsT/hr
+# TODO: curl https://raw.githubusercontent.com/LuRsT/hr/master/hr > ~/bin/hr
+# curl https://raw.githubusercontent.com/LuRsT/hr/master/hr > ~/.bin/hr
+# https://github.com/LuRsT/hr.git
+
+# TODO: curl https://raw.githubusercontent.com/holman/spark/master/spark -o /usr/local/bin/spark && chmod +x /usr/local/bin/spark
+
+# TODO: https://github.com/benlinton/slugify.git
+
+# TODO: install rg
+# source: https://github.com/BurntSushi/ripgrep
+# $ dnf copr enable carlgeorge/ripgrep
+# $ dnf install ripgrep
+
+# TODO: install spot
+# npm install -g spot
+
+# TODO: gem install sheet
+# gem install sheet
+
+# TODO: go get github.com/dborzov/lsp
+# go get github.com/dborzov/lsp
+
+
+# INFO: look into this https://github.com/marshyski/quick-secure/blob/master/quick-secure
+
+# TODO: https://github.com/Xfennec/progress.git
+# https://github.com/Xfennec/progress.git
+
+# TODO: https://github.com/schachmat/wego
+# go get -u github.com/schachmat/wego
+
+# TODO: npm install -g node-geocoder-cli
+# https://github.com/nchaulet/node-geocoder-cli
+
+# TODO: npm install -g manga-scraper
+# https://www.npmjs.com/package/manga-scraper
 
 - name: check ruby versions installed for select users
   shell: |
