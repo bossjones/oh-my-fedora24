@@ -43,3 +43,12 @@ joshualund.golang
 mjanser.powerline
 
 pablocrivella.nvm
+
+# https://github.com/dev-sec/ansible-os-hardening
+dev-sec.os-hardening
+
+# https://github.com/dev-sec/ansible-ssh-hardening
+dev-sec.ssh-hardening
+
+# https://github.com/dev-sec/ansible-nginx-hardening
+dev-sec.nginx-hardening

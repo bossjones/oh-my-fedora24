@@ -87,6 +87,7 @@ nvm_global_packages:
   - wireless-tools
   - yaml-lint
   - pathogen-pm
+  - manga-scraper
 nvm_users:
   - "{{ base_vars.USER }}"
 

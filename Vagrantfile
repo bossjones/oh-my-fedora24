@@ -17,7 +17,7 @@ Vagrant.configure("2") do |config|
 
  # set auto_update to false, if you do NOT want to check the correct
   # additions version when booting this machine
-  config.vbguest.auto_update = true
+  config.vbguest.auto_update = false
 
   # do NOT download the iso file from a webserver
   config.vbguest.no_remote = false
@@ -49,6 +49,10 @@ Vagrant.configure("2") do |config|
     ansible.extra_vars = {
       public_key: public_key
     }
+  end
+
+  config.push.define "atlas" do |push|
+    push.app = "bossjones/oh-my-fedora24"
   end
 
   config.vm.hostname = 'hyena.org'

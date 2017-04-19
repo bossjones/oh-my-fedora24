@@ -104,4 +104,4 @@ roles/zzet.rbenv/
 roles/ANXS.build-essential/
 roles/ANXS.git/
 roles/pablocrivella.nvm/
-
+.envrc
