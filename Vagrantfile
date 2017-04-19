@@ -15,9 +15,11 @@ Vagrant.configure("2") do |config|
   # boxes at https://atlas.hashicorp.com/search.
   config.vm.box = "fedora/24-cloud-base"
 
+  config.vm.network "private_network", ip: box_ip
+
  # set auto_update to false, if you do NOT want to check the correct
   # additions version when booting this machine
-  config.vbguest.auto_update = false
+  config.vbguest.auto_update = true
 
   # do NOT download the iso file from a webserver
   config.vbguest.no_remote = false
@@ -32,6 +34,8 @@ Vagrant.configure("2") do |config|
       # user modifiable memory/cpu settings
       vb.memory = 6048
       vb.cpus = 2
+      vb.customize ["modifyvm", :id, "--cpuexecutioncap", "75"]
+      vb.customize ["modifyvm", :id, "--chipset", "ich9"]
   end
 
   public_key = ENV['HOME'] + '/dev/vagrant-box/fedora/keys/vagrant.pub'
@@ -64,6 +68,7 @@ Vagrant.configure("2") do |config|
   config.vm.network "forwarded_port", guest: 139, host: 1139
   config.vm.network "forwarded_port", guest: 8081, host: 8881
   config.vm.network "forwarded_port", guest: 2376, host: 2376
+  config.vm.network "forwarded_port", guest: 1999, host: 19999
 
   # ssh
   config.ssh.username = "vagrant"

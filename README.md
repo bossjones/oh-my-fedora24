@@ -107,3 +107,29 @@ Ansible failed to complete successfully. Any error output should be
 visible above. Please fix these errors and try again.
 
 ```
+
+
+https://jedi.readthedocs.io/en/latest/docs/usage.html#tab-completion-in-the-python-shell
+
+```
+# ~/.pythonrc.py
+try:
+    from jedi.utils import setup_readline
+    setup_readline()
+except ImportError:
+    # Fallback to the stdlib readline completer if it is installed.
+    # Taken from http://docs.python.org/2/library/rlcompleter.html
+    print("Jedi is not installed, falling back to readline")
+    try:
+        import readline
+        import rlcompleter
+        readline.parse_and_bind("tab: complete")
+    except ImportError:
+        print("Readline is not installed either. No tab completion is enabled.")
+```
+
+```
+dnf -y copr enable dperson/neovim
+dnf -y install neovim
+dnf -y install python3-neovim python3-neovim-gui
+```
