@@ -105,3 +105,12 @@ roles/ANXS.build-essential/
 roles/ANXS.git/
 roles/pablocrivella.nvm/
 .envrc
+roles/dev-sec.nginx-hardening/
+roles/dev-sec.os-hardening/
+roles/dev-sec.ssh-hardening/
+
+# molecule
+.cache
+.molecule
+venv/
+__pycache__

@@ -1,3 +1,6 @@
+mkfile_path := $(abspath $(lastword $(MAKEFILE_LIST)))
+current_dir := $(notdir $(patsubst %/,%,$(dir $(mkfile_path))))
+
 .PHONY: list help
 
 help:
@@ -38,3 +41,14 @@ download-roles:
 
 install-cidr-brew:
 	pip install cidr-brewer
+
+install-test-deps:
+	pip install ansible==2.2.3.0
+	pip install docker-py
+	pip install molecule --pre
+
+bootstrap-molecule:
+	molecule init scenario --role-name $(current_dir) --scenario-name default
+
+ci:
+	molecule test
