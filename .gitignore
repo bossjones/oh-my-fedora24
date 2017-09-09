@@ -114,3 +114,10 @@ roles/dev-sec.ssh-hardening/
 .molecule
 venv/
 __pycache__
+
+
+*.xterm
+digital-ocean-history.txt
+digital-ocean-keys
+orig-ks-digial-ocean
+temp
