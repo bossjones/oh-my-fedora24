@@ -1,0 +1,39 @@
+---
+services: docker
+
+env:
+  - distro: ubuntu1604
+  - ANSIBLE_VERSION: latest
+  - ANSIBLE_VERSION: 2.3.2.0
+  - ANSIBLE_VERSION: 2.2.3.0
+
+script:
+  # Download test shim.
+  - wget -O ${PWD}/tests/test.sh https://gist.githubusercontent.com/geerlingguy/73ef1e5ee45d8694570f334be385e181/raw/
+  - chmod +x ${PWD}/tests/test.sh
+
+  # Run tests.
+  - ${PWD}/tests/test.sh
+
+# An example of everything you can do with this
+# source: https://github.com/geerlingguy/ansible-role-nodejs/blob/master/.travis.yml
+# script:
+#   # Configure test script so we can run extra tests after playbook is run.
+#   - export container_id=$(date +%s)
+#   - export cleanup=false
+
+#   # Download test shim.
+#   - wget -O ${PWD}/tests/test.sh https://gist.githubusercontent.com/geerlingguy/73ef1e5ee45d8694570f334be385e181/raw/
+#   - chmod +x ${PWD}/tests/test.sh
+
+#   # Run tests.
+#   - ${PWD}/tests/test.sh
+
+#   # Ensure Node.js is installed.
+#   - 'docker exec --tty ${container_id} env TERM=xterm which node'
+#   - 'docker exec --tty ${container_id} env TERM=xterm node -v'
+
+#   # Ensure npm packages are installed globally.
+#   - 'docker exec --tty ${container_id} env TERM=xterm bash --login -c "npm list -g --depth=0 jslint"'
+#   - 'docker exec --tty ${container_id} env TERM=xterm bash --login -c "npm list -g --depth=0 node-sass"'
+#   - 'docker exec --tty ${container_id} env TERM=xterm bash --login -c "npm list -g --depth=0 yo"'

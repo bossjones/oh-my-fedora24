@@ -1,0 +1,39 @@
+---
+# $ cd ~/
+# $ git clone --recursive https://github.com/jessfraz/.vim.git .vim
+# $ ln -sf $HOME/.vim/vimrc $HOME/.vimrc
+# $ cd $HOME/.vim
+# $ git submodule update --init
+
+- name: "git clone --recursive https://github.com/jessfraz/.vim.git .vim"
+  git: repo=https://github.com/jessfraz/.vim.git
+       dest="{{base_vars.USER_HOME}}/.vim"
+       update=no
+       depth=1
+       recursive=yes
+  become: "{{base_vars.USER}}"
+  become_user: "{{base_vars.USER}}"
+
+- name: "ln -sf HOME/.vim/vimrc HOME/.vimrc"
+  file:
+    src: "{{base_vars.USER_HOME}}/.vim/.vimrc"
+    dest: "{{base_vars.USER_HOME}}/.vimrc"
+    state: link
+    force: true
+    owner: "{{base_vars.USER}}"
+    group: "{{base_vars.USER}}"
+
+# source: https://github.com/mfriedenhagen/huschteguzzel-fabric/blob/master/roles/jenkins/tasks/start_jenkins.yml
+- name: "git submodule update --init"
+  shell: "cd {{base_vars.USER_HOME}}/.vim && git submodule update --init"
+  register: result
+  changed_when: false
+  args:
+    warn: false
+
+# source: https://fedoramagazine.org/add-power-terminal-powerline/
+- name: dnf install vim-plugin-powerline
+  dnf: name={{item}} state=present
+  with_items:
+    - vim-plugin-powerline
+# sudo dnf install vim-plugin-powerline

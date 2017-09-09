@@ -2,9 +2,10 @@
 
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
+export TERM="xterm-256color"
 
 # history modifications etc
-source ~/.scarlett_aliases
+# source ~/.scarlett_aliases
 
 source $HOME/.bashrc
 
@@ -13,12 +14,13 @@ export BASH_IT=$HOME/.bash_it
 
 # Lock and Load a custom theme file
 # location /.bash_it/themes/
-export BASH_IT_THEME='devops'
+export BASH_IT_THEME='powerline-plain'
 
 # Your place for hosting Git repos. I use this for private repos.
 export GIT_HOSTING='git@github.com'
 
 # Set my editor and git editor
+# export VISUAL=vim
 export EDITOR="/usr/bin/vim -w"
 export GIT_EDITOR='/usr/bin/vim -w'
 
@@ -65,3 +67,71 @@ shopt -s cdspell
 for option in autocd globstar; do
   shopt -s "$option" 2> /dev/null
 done
+
+export CHEATCOLORS="true"
+export LESSCHARSET="utf-8"
+#
+# LC_ALL=
+# #
+# # ls colors
+# LS_COLORS="di=34"              # directories
+# LS_COLORS="${LS_COLORS}:fi=0"  # files
+# LS_COLORS="${LS_COLORS}:ln=35" # symlinks
+# LS_COLORS="${LS_COLORS}:pi=0"  # fifo file
+# LS_COLORS="${LS_COLORS}:so=32" # socket files
+# LS_COLORS="${LS_COLORS}:bd=33" # block devices
+# LS_COLORS="${LS_COLORS}:cd=33" # character devices
+# LS_COLORS="${LS_COLORS}:or=37" # orphaned symlinks
+# LS_COLORS="${LS_COLORS}:mi=37" # missing file (referenced to by symlink)
+# LS_COLORS="${LS_COLORS}:ex=31" # executable file
+
+# PATH=$PATH:/usr/lib/cw:/home/cirrus/.gem/ruby/2.3.0/bin:/home/cirrus/.bin:/usr/lib/surfraw:/home/cirrus/venv/bin
+
+# git
+
+alias __git_find_subcommand='__git_find_on_cmdline'
+alias g='git'
+alias ga='git add'
+alias gall='git add .'
+alias gb='git branch'
+alias gba='git branch -a'
+alias gc='git commit -v'
+alias gca='git commit -v -a'
+alias gci='git commit --interactive'
+alias gcl='git clone'
+alias gcm='git commit -v -m'
+alias gco='git checkout'
+alias gcount='git shortlog -sn'
+alias gcp='git cherry-pick'
+alias gd='git diff | /usr/local/bin/mvim -f'
+alias gdel='git branch -D'
+alias gdv='git diff -w "$@" | vim -R -'
+alias get='git'
+alias gexport='git archive --format zip --output'
+alias gg='git log --graph --pretty=format:'\''%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset'\'' --abbrev-commit --date=relative'
+alias gl='git pull'
+alias gll='git log --graph --pretty=oneline --abbrev-commit'
+alias gm='git merge'
+alias gmu='git fetch origin -v; git fetch upstream -v; git merge upstream/master'
+alias gp='git push'
+alias gpo='git push origin'
+alias gpp='git pull && git push'
+alias gpr='git pull --rebase'
+alias gs='git status'
+alias gsl='git shortlog -sn'
+alias gss='git status -s'
+alias gst='git status'
+alias gup='git fetch && git rebase'
+alias gus='git reset HEAD'
+alias gw='git whatchanged'
+
+export PATH="~/.bin:$PATH"
+
+source ~/.super_aliases
+
+if [ -f `which powerline-daemon` ]; then
+  powerline-daemon -q
+  POWERLINE_BASH_CONTINUATION=1
+  POWERLINE_BASH_SELECT=1
+  . /usr/share/powerline/bash/powerline.sh
+fi

@@ -1,0 +1,105 @@
+---
+
+# - include_vars: "{{ nvm_env }}.yml"
+
+# - include: "system/install.yml"
+#   when: "nvm_env == 'system'"
+
+# - include: "user/install.yml"
+#   when:  "nvm_env == 'user'"
+
+# NOTE: COMMENT ME IN THIS IS user/install.yml
+- name: checkout nvm_repo for selected users
+  git: >
+    repo={{ nvm_repo }}
+    dest={{ nvm_root }}
+    version={{ nvm_version }}
+    accept_hostkey=true
+  with_items: "{{ nvm_users }}"
+  become: true
+  become_user: "{{ item }}"
+
+- name: add nvm initialization to profile
+  template: >
+    src=nvm.sh.j2
+    dest=/etc/profile.d/nvm.sh
+    owner=root
+    group=root
+    mode=0755
+  become: true
+
+# - include: "system/install_versions.yml"
+#   when: "nvm_env == 'system'"
+#
+# - include: "system/install_packages.yml"
+#   when: "nvm_env == 'system'"
+
+# - include: "user/install_versions.yml"
+#   when: "nvm_env == 'user'"
+
+# NOTE: install_versions
+#############################################################################################
+# - name: install versions for each user
+#   shell: bash -lc "nvm install {{ item.1 }}"
+#   become: true
+#   become_user: "{{ item.0 }}"
+#   with_nested:
+#     - "{{ nvm_users }}"
+#     - "{{ nvm_node_versions }}"
+#   register: output
+#   changed_when: "'already installed.' not in output.stderr"
+
+- name: install versions for each user
+  shell: |
+    bash -lc "nvm install {{ item.1 }}"
+  become: "{{base_vars.USER}}"
+  become_user: "{{ item.0 }}"
+  with_nested:
+    - "{{ nvm_users }}"
+    - "{{ nvm_node_versions }}"
+  register: output
+  changed_when: "'already installed.' not in output.stderr"
+  # ignore_errors: yes
+  # failed_when: false
+  # check_mode: no
+  args:
+    executable: /bin/bash
+
+- name: create alias directory for each user
+  file: path="{{ nvm_root }}/alias" state=directory
+  become: true
+  become_user: "{{ item }}"
+  with_items: "{{ nvm_users }}"
+
+- name: set {{ nvm_default_node_version }} as default version for each user
+  copy: dest="{{ nvm_root }}/alias/default" content="{{ nvm_default_node_version }}"
+  become: true
+  become_user: "{{ item }}"
+  with_items: "{{ nvm_users }}"
+#############################################################################################
+
+# - include: "user/install_packages.yml"
+#   when: "nvm_env == 'user'"
+
+#############################################################################################
+# - name: install packages for each user
+#   shell: bash -lc "nvm use {{ item.1 }} && npm install -g {{ item.2 }}"
+#   become: true
+#   become_user: "{{ item.0 }}"
+#   with_nested:
+#     - "{{ nvm_users }}"
+#     - "{{ nvm_node_versions }}"
+#     - "{{ nvm_global_packages }}"
+
+- name: install packages for each user
+  shell: |
+    bash -lc "nvm use {{ item.1 }} && npm install -g {{ item.2 }}"
+  become: true
+  become_user: "{{ item.0 }}"
+  with_nested:
+    - "{{ nvm_users }}"
+    - "{{ nvm_node_versions }}"
+    - "{{ nvm_global_packages }}"
+  args:
+    executable: /bin/bash
+#############################################################################################

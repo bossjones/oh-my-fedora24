@@ -22,6 +22,189 @@
     - caca-utils
     - ImageMagick
     - gcc
+    - lynx
+    - ccze
+    - whois
+    - socat
+    - tig
+    - strace
+    - tcpdump
+    - autoconf
+    - gcc
+    - bison
+    - flex
+    - gcc-c++
+    - gettext
+    - kernel-devel
+    - make
+    - m4
+    - ncurses-devel
+    - inotify-tools
+    - xmlstarlet
+    - xclip
+    - jq
+    - telnet
+    - moreutils
+    - expect
+    - expect-devel
+    - coreutils
+    - ascii
+    - asciinema
+    - asciidoc
+    - NetPIPE
+    - netsed
+    - sec
+    - maven
+    - ncurses-base
+    - tcpflow
+    - screenfetch
+    - figlet
+    - libcaca.x86_64
+    - libcaca-devel
+    - cpulimit
+    - w3m
+    - w3m-img
+    # http://www.binarytides.com/linux-commands-monitor-network/
+    - nload
+    # - slurm
+    - powertop
+    - iftop
+    - jnettop
+    # - curl -s https://s3.amazonaws.com/download.draios.com/stable/install-sysdig | sudo bash
+    - saidar
+    - dstat
+    # https://www.serverdensity.com/monitor/linux/how-to/
+    # - sar
+    - goaccess
+    - whowatch
+    - parallel
+    - newsbeuter
 
-# vim vim-common vim-doc curl net-tools nmap wget whois socat openssh-client openssh-server openssl libwww-perl tig git git-man subversion cvs apt-file alien iotop strace tcpdump iproute ltrace lsof inotify-tools sysstat ddd tshark mlocate tcl erlang python-pip python-dev tmux xmlstarlet xclip jq telnet athena-jot xterm eatmydata util-linux moreutils sshfs tree screen xdotool xmlto expect expect-dev coreutils build-essential zip unzip haproxy ansible nethogs iftop ranger mitmproxy ant ascii asciinema asciidoc golang rsync docker at cron expect-dev patch perl perl-base perl-doc perl-modules
-# sed anacron mssh daemon fslint gocr netpipe-tcp netsed netsniff-ng pkg-config procps sudo tcpd time tree tofrodos sec rhino postgresql-client maven lsb-base lsb-release readline-common rlwrap software-properties-common ncurses-base ncurses-bin tcpflow graphviz linux-doc libcorelinux-doc user-mode-linux-doc perl-doc vim-doc bup libmagick++-dev silversearcher-ag ruby-dev webfs etherape python2.7-examples sniffit tcpick tcpreplay tcpreen tcpspy tcputils darkstat stone fatrace bashdb gitg git-repair i7z sqlmap ndiff hollywood actiona dateutils youtube-dl dwdiff iodine tsocks mininet dnstracer squashfs-tools x11-utils
+# https://github.com/ok-borg/borg
+# TODO: make this into a shell
+# wget https://github.com/ok-borg/borg/releases/download/v0.0.3/borg_linux_amd64 -O /usr/local/bin/borg
+# chmod 755 /usr/local/bin/borg
+
+# TODO: Make a shell ansible for this then append to ~/.bash_profile
+# add fzf
+# git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+# ~/.fzf/install
+
+# source: https://github.com/LuRsT/hr
+# TODO: curl https://raw.githubusercontent.com/LuRsT/hr/master/hr > ~/bin/hr
+# curl https://raw.githubusercontent.com/LuRsT/hr/master/hr > ~/.bin/hr
+# https://github.com/LuRsT/hr.git
+
+# TODO: curl https://raw.githubusercontent.com/holman/spark/master/spark -o /usr/local/bin/spark && chmod +x /usr/local/bin/spark
+
+# TODO: https://github.com/benlinton/slugify.git
+
+# TODO: install rg
+# source: https://github.com/BurntSushi/ripgrep
+# $ dnf copr enable carlgeorge/ripgrep
+# $ dnf install ripgrep
+
+# TODO: install spot
+# npm install -g spot
+
+# TODO: gem install sheet
+# gem install sheet
+
+# TODO: go get github.com/dborzov/lsp
+# go get github.com/dborzov/lsp
+
+
+# INFO: look into this https://github.com/marshyski/quick-secure/blob/master/quick-secure
+
+# TODO: https://github.com/Xfennec/progress.git
+# https://github.com/Xfennec/progress.git
+
+# TODO: https://github.com/schachmat/wego
+# go get -u github.com/schachmat/wego
+
+# TODO: npm install -g node-geocoder-cli
+# https://github.com/nchaulet/node-geocoder-cli
+
+# TODO: npm install -g manga-scraper
+# https://www.npmjs.com/package/manga-scraper
+
+# TODO: git@github.com:brendangregg/perf-tools.git
+# git@github.com:brendangregg/perf-tools.git
+
+
+################################################################################################################
+# source: https://fedoramagazine.org/upgrading-fedora-23-workstation-to-fedora-24/
+# SOURCE: http://www.tecmint.com/bcc-best-linux-performance-monitoring-tools/
+# NOTE: perf tools!
+# dnf upgrade --refresh
+# dnf install dnf-plugin-system-upgrade
+# dnf remove kernel-core.x86_64                     4.11.0-0.rc6.git2.2.fc27        @fedora-rawhide-kernel-nodebug
+# kernel-devel.x86_64                    4.11.0-0.rc6.git2.2.fc27        @fedora-rawhide-kernel-nodebug
+# kernel-headers.x86_64                  4.11.0-0.rc6.git2.2.fc27        @fedora-rawhide-kernel-nodebug
+# Fedora (4.10.8-100.fc24.x86_64) 24 (Cloud Edition)
+
+# $ sudo dnf config-manager --add-repo=http://alt.fedoraproject.org/pub/alt/rawhide-kernel-nodebug/fedora-rawhide-kernel-nodebug.repo
+# $ sudo dnf update
+# $ reboot
+
+# $ echo -e '[iovisor]\nbaseurl=https://repo.iovisor.org/yum/nightly/f23/$basearch\nenabled=1\ngpgcheck=0' | sudo tee /etc/yum.repos.d/iovisor.repo
+# $ sudo dnf update
+# $ sudo dnf install bcc-tools
+# 
+# echo -e '[iovisor]\nbaseurl=https://repo.iovisor.org/yum/nightly/f24/$basearch\nenabled=1\ngpgcheck=0' | sudo tee /etc/yum.repos.d/iovisor.repo
+# sudo dnf install bcc-tools --bes --allowerasing
+# dnf update --best --allowerasing -y
+# https://github.com/iovisor/bcc/blob/master/INSTALL.md
+# https://github.com/brendangregg/perf-tools.git
+#
+# https://github.com/brendangregg/FlameGraph.git
+#
+# https://github.com/openresty/openresty-systemtap-toolkit.git
+#
+# etckeeper
+# https://etckeeper.branchable.com/install/
+# https://joeyh.name/code/etckeeper/
+# 
+#
+# https://github.com/mikery/ssh2ec2.git
+################################################################################################################
+
+- name: check ruby versions installed for select users
+  shell: |
+    bash -lc "chown {{base_vars.USER}}:{{base_vars.USER}} -R /usr/lib/python3.5/site-packages/cheat/cheatsheets"
+  become: yes
+  become_method: sudo
+  args:
+    executable: /bin/bash
+
+- name: cheatsheets hyena
+  copy: src=hyena dest=/usr/lib/python3.5/site-packages/cheat/cheatsheets/hyena
+  become: yes
+  become_user: "{{base_vars.USER}}"
+  ignore_errors: yes
+
+- name: "go get -u github.com/schachmat/wego"
+  shell: |
+    bash -lc "go get -u github.com/schachmat/wego"
+  become: "{{base_vars.USER}}"
+  become_user: "{{base_vars.USER}}"
+  args:
+    executable: /bin/bash
+
+# source: https://developer.fedoraproject.org/deployment/copr/copr-cli.html
+# Copr features a command line interface that can help you with managing projects, submitting builds, etc.
+# - name: "dnf copr enable carlgeorge/ripgrep"
+#   shell: |
+#     dnf copr enable carlgeorge/ripgrep -y
+#   become: yes
+#   become_method: sudo
+#   args:
+#     executable: /bin/bash
+
+# - name: "dnf install ripgrep"
+#   shell: |
+#     dnf install ripgrep -y
+#   become: yes
+#   become_method: sudo
+#   args:
+#     executable: /bin/bash

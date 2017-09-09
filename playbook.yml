@@ -5,13 +5,57 @@
   vars_files:
     - vars/main.yml
   roles:
-    # - { role: juju4.ipv6 }
-    - { role: bossjones-ipv6 }
-    - { role: ksylvan.docker }
-    - { role: motd }
-    - { role: bossjones-firewalld }
-    - { role: common }
-    # - { role: pablocrivella.nvm }
+    - role: bossjones-ipv6
+    - role: ksylvan.docker
+    - role: motd
+    - role: bossjones-firewalld
+    - role: mjanser.powerline
+    - role: joshualund.golang
+    - role: common
+      theme: "powerline-plain"
+      repository: https://github.com/revans/bash-it.git
+      version: master
+      aliases:
+        - general
+      plugins:
+        - base
+        - history
+      completions:
+        - git
+    - role: bossjones-cli-tools
+
+    # - role: mmannerm.bash_it
+    #   user: vagrant
+    #   theme: "powerline-plain"
+    #   aliases:
+    #     - general
+    #     - ansible
+    #   plugins:
+    #     - history
+    #   completions:
+    #     - git
+    # tmuxinator
+    # - role: pablocrivella.nvm
+    #   nvm_env: user
+    #   nvm_version: v0.33.1
+    #   nvm_default_node_version: stable
+    #   nvm_node_versions:
+    #     - stable
+    #   nvm_global_packages:
+    #     - vtop
+    #     - whereami
+    #     - figlet-cli
+    #     - get-port-cli
+    #     - getmac
+    #     - mediumcli
+    #     - speed-test
+    #     - spoof
+    #     - tldr
+    #     - wireless-tools
+    #     - yaml-lint
+    #   nvm_users:
+    #     - vagrant
+
     # - { role: ntp }
     # - { role: jorti.fail2ban }
     # - { role: bas-ansible-roles-collection.system-ssh }
@@ -30,6 +74,12 @@
       with_first_found:
        - local-configure.yml
        - null.yml
+
+    - name: pre install system ruby
+      dnf: name={{item}} state=present
+      with_items:
+        - ruby
+
 
   tasks:
 

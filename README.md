@@ -52,3 +52,137 @@ multi - desktop configuration:
 
 Malcolm Jones
 @bossjones
+
+
+
+https://github.com/geerlingguy/ansible-role-solr/issues/64
+
+
+# Known Problems
+
+## ansible
+
+https://github.com/geerlingguy/ansible-role-solr/issues/64
+https://github.com/ansible/ansible/issues/23358
+
+```
+TASK [ksylvan.docker : fedora_repo] ********************************************
+ok: [hyena_org] => {
+    "msg": {
+        "age": "215",
+        "changed": false,
+        "connection": "close",
+        "content": "<!DOCTYPE html>\n<html>\n<head><title>Index of /repo/main/fedora/</title></head>\n<body bgcolor=\"white\">\n<h1>Index of /repo/main/fedora/</h1><hr>\n<pre><a href=\"../\">../</a>\n<a href=\"20\">20/</a>                                         01-Dec-2016 19:36  -\n<a href=\"21\">21/</a>                                         01-Dec-2016 19:36  -\n<a href=\"22\">22/</a>                                         01-Dec-2016 19:36  -\n<a href=\"23\">23/</a>                                         10-Jan-2017 23:53  -\n<a href=\"24\">24/</a>                                         05-Apr-2017 23:12  -\n<a href=\"25\">25/</a>                                         05-Apr-2017 23:12  -\n</pre><hr></body></html>\n",
+        "content_length": "687",
+        "content_type": "text/html",
+        "date": "Thu, 06 Apr 2017 01:34:13 GMT",
+        "etag": "\"8cb7fa660761d3b6a8a824f2bf396dc0\"",
+        "last_modified": "Thu, 06 Apr 2017 00:39:19 GMT",
+        "msg": "OK (687 bytes)",
+        "redirected": false,
+        "server": "AmazonS3",
+        "status": 200,
+        "url": "https://yum.dockerproject.org/repo/main/fedora/",
+        "via": "1.1 9aaf336897fdd8a2dfd1b375c61d8b0b.cloudfront.net (CloudFront)",
+        "x_amz_cf_id": "B9bF3GbU36hAYJhtIDXoQGXu9EiYcUUSXEWDDzyxMPzEakpPchZELw==",
+        "x_amz_meta_s3cmd_attrs": "uid:0/gname:root/uname:root/gid:0/mode:33261/mtime:1491434020/atime:1491434299/md5:8cb7fa660761d3b6a8a824f2bf396dc0/ctime:1491434020",
+        "x_amz_version_id": "hCdPIsuNZF5gW6GfubBq2gcvxNtxCAkw",
+        "x_cache": "Hit from cloudfront"
+    }
+}
+
+TASK [ksylvan.docker : ansible_distribution_version] ***************************
+ok: [hyena_org] => {
+    "msg": "24"
+}
+
+TASK [ksylvan.docker : Look for the exact version] *****************************
+fatal: [hyena_org]: FAILED! => {"failed": true, "msg": "The conditional check '>{{ansible_distribution_version}}/< in {{fedora_repo.content}}' failed. The error was: Invalid conditional detected: invalid syntax (<unknown>, line 1)\n\nThe error appears to have been in '/Users/malcolm/dev/bossjones/oh-my-fedora24/roles/ksylvan.docker/tasks/main.yml': line 27, column 3, but may\nbe elsewhere in the file depending on the exact syntax problem.\n\nThe offending line appears to be:\n\n\n- name: Look for the exact version\n  ^ here\n"}
+        to retry, use: --limit @/Users/malcolm/dev/bossjones/oh-my-fedora24/playbook.retry
+
+PLAY RECAP *********************************************************************
+hyena_org                  : ok=13   changed=0    unreachable=0    failed=1
+
+Ansible failed to complete successfully. Any error output should be
+visible above. Please fix these errors and try again.
+
+```
+
+
+https://jedi.readthedocs.io/en/latest/docs/usage.html#tab-completion-in-the-python-shell
+
+```
+# ~/.pythonrc.py
+try:
+    from jedi.utils import setup_readline
+    setup_readline()
+except ImportError:
+    # Fallback to the stdlib readline completer if it is installed.
+    # Taken from http://docs.python.org/2/library/rlcompleter.html
+    print("Jedi is not installed, falling back to readline")
+    try:
+        import readline
+        import rlcompleter
+        readline.parse_and_bind("tab: complete")
+    except ImportError:
+        print("Readline is not installed either. No tab completion is enabled.")
+```
+
+```
+dnf -y copr enable dperson/neovim
+dnf -y install neovim
+dnf -y install python3-neovim python3-neovim-gui
+```
+
+
+```
+WARNING: IPv4 forwarding is disabled
+WARNING: bridge-nf-call-iptables is disabled
+WARNING: bridge-nf-call-ip6tables is disabled
+
+
+
+net.bridge.bridge-nf-call-ip6tables = 1
+net.bridge.bridge-nf-call-iptables = 1
+
+
+net.ipv6.conf.default.router_solicitations = 0
+net.ipv6.conf.default.accept_ra_rtr_pref = 0
+net.ipv6.conf.default.accept_ra_pinfo = 0
+net.ipv6.conf.default.accept_ra_defrtr = 0
+net.ipv6.conf.default.autoconf = 0
+net.ipv6.conf.default.dad_transmits = 0
+net.ipv6.conf.default.max_addresses = 1
+
+
+
+/sbin/sysctl -w kernel.domainname="example.com"
+
+/sbin/sysctl -w net.bridge.bridge-nf-call-iptables="1"
+```
+
+```
+WARNING: IPv4 forwarding is disabled
+WARNING: bridge-nf-call-iptables is disabled
+WARNING: bridge-nf-call-ip6tables is disabled
+
+
+
+net.bridge.bridge-nf-call-ip6tables = 1
+net.bridge.bridge-nf-call-iptables = 1
+
+
+net.ipv6.conf.default.router_solicitations = 0
+net.ipv6.conf.default.accept_ra_rtr_pref = 0
+net.ipv6.conf.default.accept_ra_pinfo = 0
+net.ipv6.conf.default.accept_ra_defrtr = 0
+net.ipv6.conf.default.autoconf = 0
+net.ipv6.conf.default.dad_transmits = 0
+net.ipv6.conf.default.max_addresses = 1
+
+
+
+/sbin/sysctl -w kernel.domainname="example.com"
+
+/sbin/sysctl -w net.bridge.bridge-nf-call-iptables="1"
+```

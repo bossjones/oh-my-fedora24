@@ -1,0 +1,58 @@
+# setup_python.yml
+---
+
+- name: Install virtualenv and virtualenvwrapper
+  become: yes
+  become_method: sudo
+  pip: name={{ item }}
+       executable=pip3
+       state=present
+  with_items:
+  - virtualenv
+  - virtualenvwrapper
+  - ipython
+  - httpstat
+  - cheat
+  - psutil
+  - youtube-dl
+
+# - name: glances install stuff
+#   become: yes
+#   become_method: sudo
+#   pip: name={{ item }}
+#        executable=pip3
+#        state=present
+#   with_items:
+#   - glances[action,browser,cloud,cpuinfo,chart,docker,export,folders,gpu,ip,raid,snmp,web,wifi]
+
+# pip3 install virtualenv virtualenvwrapper ipython
+
+# - name: install ipython
+#   pip: name=ipython
+#        state=present
+#        executable=pip3
+
+- name: install numpy
+  pip: name=numpy
+       state=present
+       executable=pip3
+
+- name: configure pythonrc
+  template: src="home/{{base_vars.USER}}/pythonrc.j2"
+            dest="/home/{{base_vars.USER}}/.pythonrc"
+            owner="{{base_vars.USER}}"
+            group="{{base_vars.USER}}"
+            mode=0644
+            backup=yes
+  tags:
+  - pythonrc
+  - configuration
+
+
+- name: "install glances system wide"
+  shell: |
+    bash -lc "wget -O- https://bit.ly/glances | /bin/bash"
+  become: yes
+  become_method: sudo
+  args:
+    executable: /bin/bash
