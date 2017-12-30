@@ -186,3 +186,14 @@ net.ipv6.conf.default.max_addresses = 1
 
 /sbin/sysctl -w net.bridge.bridge-nf-call-iptables="1"
 ```
+
+# Fix: Re-associate vagrant with vm
+
+vmdk gets misplaced
+
+https://github.com/hashicorp/vagrant/issues/1755
+
+
+# Example fix
+
+`VBoxManage list vms | grep hyena | cut -d" " -f2 | sed 's,{,,g' | sed 's,},,g' > ~/dev/bossjones/oh-my-fedora24/.vagrant/machines/hyena_org/virtualbox/id`
