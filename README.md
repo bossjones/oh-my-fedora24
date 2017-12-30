@@ -194,6 +194,15 @@ vmdk gets misplaced
 https://github.com/hashicorp/vagrant/issues/1755
 
 
-# Example fix
+# Example fix ( for above )
 
 `VBoxManage list vms | grep hyena | cut -d" " -f2 | sed 's,{,,g' | sed 's,},,g' > ~/dev/bossjones/oh-my-fedora24/.vagrant/machines/hyena_org/virtualbox/id`
+
+
+# Folder structure example
+
+```
+ |2.2.3|    hyenatop in ~/dev/user/scarlett-ansible/.vagrant/machines/default/virtualbox
+± |featutre-1604 ?:1 ✗| → ls
+action_provision action_set_name  creator_uid      id               index_uuid       synced_folders
+```
